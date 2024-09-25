@@ -34,7 +34,7 @@ class AuthController extends Controller
                 if(Auth::attempt($credential)){
                     $req->session()->regenerate();
  
-                    return redirect()->intended('dashboard');
+                    return redirect()->intended('admin/dashboard');
                 }else {
                     return redirect()->back()->with('error', 'Anda tidak bisa login');
                 }
