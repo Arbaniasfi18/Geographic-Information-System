@@ -15,6 +15,8 @@ class AdminController extends Controller
 
         $dianaController = DianaGisController::dianaGis('2023');
         $dianaController2022 = DianaGisController::dianaGis('2022');
+        $dianaController2021 = DianaGisController::dianaGis('2021');
+        $dianaController2020 = DianaGisController::dianaGis('2020');
 
         $positif = 0;
         $positif2022 = 0;
@@ -44,6 +46,10 @@ class AdminController extends Controller
             'update_sembuh' => $updatesembuh,
             'mati' => $mati,
             'update_mati' => $updatemati,
+            'cluster2023' => $dianaController,
+            'cluster2022' => $dianaController2022,
+            'cluster2021' => $dianaController2021,
+            'cluster2020' => $dianaController2020,
         ]);
     }
 
