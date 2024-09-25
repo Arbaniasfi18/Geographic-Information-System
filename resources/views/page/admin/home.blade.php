@@ -2,6 +2,9 @@
 
 @section('content')
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <div class="container-full">
@@ -16,7 +19,7 @@
                             </div>
                             <div>
                                 <p class="text-mute mt-20 mb-0 font-size-16">Total Penderita 2023</p>
-                                <h3 class="text-white mb-0 font-weight-500">{{ $positif }} <small class="text-danger"><i class="fa fa-caret-up"></i>+{{ $update_positif }}%</small></h3>
+                                <h3 class="text-white mb-0 font-weight-500" id="tess">{{ $positif }} <small class="text-danger"><i class="fa fa-caret-up"></i>+{{ $update_positif }}%</small></h3>
                             </div>
                         </div>
                     </div>
@@ -47,47 +50,49 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="column">
                 
-                <div class="col-xxxl-7 col-xl-6 col-12">
+                <div class="col-12">
                     <div class="box">
                         <div class="box-header">
                             <h4 class="box-title">Grafik kasus TBC Tahun 2023</h4>
                         </div>
                         <div class="box-body">
-                            <div id="recent_trend"></div>
+                            <div id="chart2023" style="height: 370px; width: 100%;"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-xxxl-7 col-xl-6 col-12">
+                <div class="col-12">
                     <div class="box">
                         <div class="box-header">
                             <h4 class="box-title">Grafik kasus TBC Tahun 2022</h4>
                         </div>
                         <div class="box-body">
-                            <div id="recent_trend1"></div>
+                            <div id="chart2022" style="height: 370px; width: 100%;"></div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-xxxl-7 col-xl-6 col-12">
+                <div class="col-12">
                     <div class="box">
                         <div class="box-header">
                             <h4 class="box-title">Grafik kasus TBC Tahun 2021</h4>
                         </div>
                         <div class="box-body">
-                            <div id="recent_trend2"></div>
+                            <div id="chart2021" style="height: 370px; width: 100%;"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-xxxl-7 col-xl-6 col-12">
+                <div class="col-12">
                     <div class="box">
                         <div class="box-header">
                             <h4 class="box-title">Grafik kasus TBC Tahun 2020</h4>
                         </div>
                         <div class="box-body">
-                            <div id="recent_trend3"></div>
+                            <div id="chart2020" style="height: 370px; width: 100%;"></div>
                         </div>
                     </div>
                 </div>
@@ -96,5 +101,92 @@
         <!-- /.content -->
     </div>
 </div>
+
+<script>
+
+    function showchart(year) {
+
+        if (year == '2020') {
+            var cluster = @json($cluster2020);
+        }else if (year == '2021') {
+            var cluster = @json($cluster2021);
+        }else if (year == '2022') {
+            var cluster = @json($cluster2022);
+        }else if (year == '2023') {
+            var cluster = @json($cluster2023);
+        }
+
+        var datapositif = [];
+        var datamati = [];
+        var datasembuh = [];
+    
+        for (let index = 0; index < cluster['names'].length; index++) {
+            var temp = {
+                label: cluster['names'][index],
+                y: cluster['dataPoints'][index][0],
+            }
+            var temp1 = {
+                label: cluster['names'][index],
+                y: cluster['dataPoints'][index][1],
+            }
+            var temp2 = {
+                label: cluster['names'][index],
+                y: cluster['dataPoints'][index][2],
+            }
+            datapositif.push(temp);        
+            datasembuh.push(temp1);        
+            datamati.push(temp2);        
+        }
+
+        var div = '#chart' + year;
+    
+        var chart = new CanvasJS.Chart("chart" + year, {
+            exportEnabled: true,
+            animationEnabled: true,
+            backgroundColor: "transparent",
+            axisX: {
+                title: "Kota",
+                titleFontColor: "white",
+                labelFontColor: "white",  
+            },
+            axisY: {
+                lineColor: "#4F81BC",
+                labelFontColor: "#4F81BC",
+                tickColor: "#4F81BC",
+            },
+            toolTip: {
+                shared: true,
+            },
+            data: [
+                {        
+                type: "column",
+                name: "Positif",
+                dataPoints: datapositif,
+            },
+            {        
+                type: "column",
+                name: "Mati",
+                dataPoints: datamati
+            } ,
+            {        
+                type: "column",
+                name: "Sembuh",
+                dataPoints: datasembuh
+            } 
+                
+            ]
+        });
+
+        chart.render();
+
+    }
+
+    showchart('2020');
+    showchart('2021');
+    showchart('2022');
+    showchart('2023');
+
+
+</script>
     
 @endsection
