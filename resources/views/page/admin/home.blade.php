@@ -123,15 +123,15 @@
         for (let index = 0; index < cluster['names'].length; index++) {
             var temp = {
                 label: cluster['names'][index],
-                y: cluster['dataPoints'][index][0],
+                y: cluster['dataPoints'][index][1],
             }
             var temp1 = {
                 label: cluster['names'][index],
-                y: cluster['dataPoints'][index][1],
+                y: cluster['dataPoints'][index][2],
             }
             var temp2 = {
                 label: cluster['names'][index],
-                y: cluster['dataPoints'][index][2],
+                y: cluster['dataPoints'][index][3],
             }
             datapositif.push(temp);        
             datasembuh.push(temp1);        

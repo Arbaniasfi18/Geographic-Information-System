@@ -1,0 +1,13 @@
+<table>
+    <thead>
+        <tr>
+            <th>Kota/Kab.</th>
+            <th>Penderita</th>
+            <th>Sembuh</th>
+            <th>Meninggal</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Tahun</th>
+        </tr>
+    </thead>
+</table>

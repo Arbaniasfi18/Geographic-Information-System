@@ -39,7 +39,14 @@ Route::middleware('guest')->group(function() {
 Route::middleware('auth')->group(function() {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/admin/data-penyebaran', [AdminController::class, 'penyebaran']);
-    Route::get('/admin/data-kasus', [AdminController::class, 'kasus']);
+    Route::get('/admin/data-kasus', [AdminController::class, 'kasus'])->name('data_kasus');
+    Route::get('/admin/data-kasus/tambah/{tahun}', [AdminController::class, 'tambah_kasus'])->name('data_kasus.tambah');
+    Route::post('/admin/data-kasus/tambah/{tahun}', [AdminController::class, 'tambah_kasus_post']);
+    Route::get('/admin/data-kasus/update/{tahun}/{id}', [AdminController::class, 'update_kasus'])->name('data_kasus.update');
+    Route::post('/admin/data-kasus/update/{tahun}/{id}', [AdminController::class, 'update_kasus_post']);
+    Route::get('/admin/data-kasus/delete/{tahun}/{id}', [AdminController::class, 'delete_kasus']);
+    Route::post('/admin/data-kasus/import', [AdminController::class, 'import_excel']);
+    Route::get('/admin/data-kasus/template', [AdminController::class, 'template']);
     Route::get('/admin/keluhan', [AdminController::class, 'keluhan']);
     Route::get('/logout', [AuthController::class, 'logout']);
 });

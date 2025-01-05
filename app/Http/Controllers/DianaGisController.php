@@ -24,6 +24,7 @@ class DianaGisController extends Controller
         $names = $dataCovid->pluck('nama')->toArray();
         $dataPoints = $dataCovid->map(function ($item) {
             return [
+                $item->id,
                 floatval($item->konfirmasi),
                 floatval($item->sembuh),
                 floatval($item->meninggal),

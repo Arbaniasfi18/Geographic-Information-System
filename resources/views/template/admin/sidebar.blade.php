@@ -33,7 +33,7 @@
 		</li>
 
 		<li>
-			<a href="{{ url('/admin/data-kasus') }}">
+			<a href="{{ route('data_kasus') }}">
 				<i data-feather="server"></i>
 				<span>Data Kasus TBC</span>
 			</a>

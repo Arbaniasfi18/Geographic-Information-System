@@ -125,15 +125,15 @@
         cluster = 3;
       }
 
-      var circle = L.circleMarker([dataPoints[index][3], dataPoints[index][4]], {
+      var circle = L.circleMarker([dataPoints[index][4], dataPoints[index][5]], {
         color: clusterColors[cluster],
         fillOpacity: 0.5,
         radius: 5
       }).bindPopup(
         '<b>' + tbcTotal['names'][index] + '</b><br>' +
-        'Angka Positif: ' + dataPoints[index][0] + '<br>' +
-        'Sembuh: ' + dataPoints[index][1] + '<br>' +
-        'Angka Mati: ' + dataPoints[index][2]
+        'Angka Positif: ' + dataPoints[index][1] + '<br>' +
+        'Sembuh: ' + dataPoints[index][2] + '<br>' +
+        'Angka Mati: ' + dataPoints[index][3]
       ).addTo(map2020);
     }
 
@@ -157,15 +157,15 @@
         cluster = 3;
       }
 
-      var circle = L.circleMarker([dataPoints[index][3], dataPoints[index][4]], {
+      var circle = L.circleMarker([dataPoints[index][4], dataPoints[index][5]], {
         color: clusterColors[cluster],
         fillOpacity: 0.5,
         radius: 5
       }).bindPopup(
         '<b>' + tbcTotal['names'][index] + '</b><br>' +
-        'Angka Positif: ' + dataPoints[index][0] + '<br>' +
-        'Sembuh: ' + dataPoints[index][1] + '<br>' +
-        'Angka Mati: ' + dataPoints[index][2]
+        'Angka Positif: ' + dataPoints[index][1] + '<br>' +
+        'Sembuh: ' + dataPoints[index][2] + '<br>' +
+        'Angka Mati: ' + dataPoints[index][3]
       ).addTo(map2021);
     }
 
@@ -189,15 +189,15 @@
         cluster = 3;
       }
 
-      var circle = L.circleMarker([dataPoints[index][3], dataPoints[index][4]], {
+      var circle = L.circleMarker([dataPoints[index][4], dataPoints[index][5]], {
         color: clusterColors[cluster],
         fillOpacity: 0.5,
         radius: 5
       }).bindPopup(
         '<b>' + tbcTotal['names'][index] + '</b><br>' +
-        'Angka Positif: ' + dataPoints[index][0] + '<br>' +
-        'Sembuh: ' + dataPoints[index][1] + '<br>' +
-        'Angka Mati: ' + dataPoints[index][2]
+        'Angka Positif: ' + dataPoints[index][1] + '<br>' +
+        'Sembuh: ' + dataPoints[index][2] + '<br>' +
+        'Angka Mati: ' + dataPoints[index][3]
       ).addTo(map2022);
     }
 
@@ -221,15 +221,15 @@
         cluster = 3;
       }
 
-      var circle = L.circleMarker([dataPoints[index][3], dataPoints[index][4]], {
+      var circle = L.circleMarker([dataPoints[index][4], dataPoints[index][5]], {
         color: clusterColors[cluster],
         fillOpacity: 0.5,
         radius: 5
       }).bindPopup(
         '<b>' + tbcTotal['names'][index] + '</b><br>' +
-        'Angka Positif: ' + dataPoints[index][0] + '<br>' +
-        'Sembuh: ' + dataPoints[index][1] + '<br>' +
-        'Angka Mati: ' + dataPoints[index][2]
+        'Angka Positif: ' + dataPoints[index][1] + '<br>' +
+        'Sembuh: ' + dataPoints[index][2] + '<br>' +
+        'Angka Mati: ' + dataPoints[index][3]
       ).addTo(map2023);
     }
   

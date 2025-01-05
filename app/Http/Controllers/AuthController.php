@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -38,6 +40,8 @@ class AuthController extends Controller
                 }else {
                     return redirect()->back()->with('error', 'Anda tidak bisa login');
                 }
+            }else {
+                return redirect()->back()->with('error', 'Password Salah');
             }
         }else {
             return redirect()->back()->with('error', 'Akun tidak ditemukan');
@@ -47,6 +51,18 @@ class AuthController extends Controller
 
     public function register(Request $req)
     {
+        $validator = Validator::make($req->all(), [
+            'email' => 'required|unique:users,email',
+            'nama' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'conf_pass' => 'required|same:password',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with('error', 'Akun sudah terdaftar/seluruh fiels harus diisi');
+        }
+
         $data = [
             'name' => $req->nama,
             'email' => $req->email,
